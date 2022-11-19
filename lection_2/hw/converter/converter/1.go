@@ -1,36 +1,36 @@
 package converter
 
+/* Структура приватных полей конвертера */
 type converter struct {
 	symbols []string
 	values  []int
 }
 
+/* Интерфейс конвертера. Его публичные методы методы */
 type Converter interface {
 	IntToRoman(num int) string
 }
 
+/* Метод перевода числа из десятичной в римскую систему счисления */
 func (c *converter) IntToRoman(num int) string {
-	number := num
-	result := ""
+	var result string
 
 	for i := 0; i < len(c.values); i++ {
 		currentValue := c.values[i]
 		currentSymbol := c.symbols[i]
 
-		for number >= currentValue {
+		for num >= currentValue {
 			result += currentSymbol
-			number -= currentValue
+			num -= currentValue
 		}
 	}
-
 	return result
 }
 
+/* Конструктор */
 func NewConverter(values []int, symbols []string) Converter {
-	converter := &converter{
+	return &converter{
 		values:  values,
 		symbols: symbols,
 	}
-
-	return converter
 }
