@@ -1,17 +1,17 @@
 package converter
 
-/* Структура приватных полей конвертера */
+// Структура приватных полей конвертера
 type converter struct {
 	symbols []string
 	values  []int
 }
 
-/* Интерфейс конвертера. Его публичные методы методы */
+// Интерфейс конвертера. Его публичные методы
 type Converter interface {
 	IntToRoman(num int) string
 }
 
-/* Метод перевода числа из десятичной в римскую систему счисления */
+// Метод перевода числа из десятичной в римскую систему счисления
 func (c *converter) IntToRoman(num int) string {
 	var result string
 
@@ -27,7 +27,7 @@ func (c *converter) IntToRoman(num int) string {
 	return result
 }
 
-/* Конструктор */
+// Конструктор
 func NewConverter(values []int, symbols []string) Converter {
 	return &converter{
 		values:  values,
